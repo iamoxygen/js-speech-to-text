@@ -3,6 +3,7 @@ const output = document.getElementById("output");
 
 let recognition;
 let isListening = false;
+let finalTranscript = ""; // To store the entire transcript
 
 if ("webkitSpeechRecognition" in window) {
   recognition = new webkitSpeechRecognition();
@@ -17,11 +18,15 @@ recognition.interimResults = true;
 recognition.lang = "en-US";
 
 recognition.onresult = function (event) {
-  let transcript = "";
+  let interimTranscript = ""; // For storing interim results
   for (let i = event.resultIndex; i < event.results.length; i++) {
-    transcript += event.results[i][0].transcript;
+    if (event.results[i].isFinal) {
+      finalTranscript += event.results[i][0].transcript; // Append to final transcript
+    } else {
+      interimTranscript += event.results[i][0].transcript; // Handle interim results
+    }
   }
-  output.value = transcript;
+  output.value = finalTranscript + interimTranscript;
 
   // Optional: Auto-scroll to the bottom
   output.scrollTop = output.scrollHeight;
@@ -34,6 +39,8 @@ recognition.onerror = function (event) {
 recognition.onend = function () {
   console.log("Speech recognition service disconnected");
   isListening = false;
+  toggleBtn.classList.remove("bg-red-500", "hover:bg-red-600");
+  toggleBtn.classList.add("bg-blue-500", "hover:bg-blue-600");
   toggleBtn.textContent = "Start Listening";
 };
 
