@@ -69,3 +69,15 @@ function stopRecognition() {
   toggleBtn.classList.add("bg-blue-500", "hover:bg-blue-600");
   toggleBtn.textContent = "Start Listening";
 }
+
+function speak() {
+  // Create a SpeechSynthesisUtterance
+  const utterance = new SpeechSynthesisUtterance(output.value);
+
+  // Select a voice
+  const voices = speechSynthesis.getVoices();
+  utterance.voice = voices[0]; // Choose a specific voice
+
+  // Speak the text
+  speechSynthesis.speak(utterance);
+}
