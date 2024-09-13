@@ -47,15 +47,15 @@ function toggleRecognition() {
 function startRecognition() {
   recognition.start();
   isListening = true;
-  toggleBtn.classList.remove("bg-blue-500");
-  toggleBtn.classList.add("bg-red-500");
+  toggleBtn.classList.remove("bg-blue-500 hover:bg-blue-600");
+  toggleBtn.classList.add("bg-red-500 hover:bg-red-600");
   toggleBtn.textContent = "Stop Listening";
 }
 
 function stopRecognition() {
   recognition.stop();
   isListening = false;
-  toggleBtn.classList.remove("bg-red-500");
-  toggleBtn.classList.add("bg-blue-500");
+  toggleBtn.classList.remove("bg-red-500 hover:bg-red-600");
+  toggleBtn.classList.add("bg-blue-500 hover:bg-blue-600");
   toggleBtn.textContent = "Start Listening";
 }
