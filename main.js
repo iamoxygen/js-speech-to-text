@@ -48,7 +48,7 @@ function startRecognition() {
   recognition.start();
   isListening = true;
   toggleBtn.classList.add(
-    "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
+    "bg-blue-500"
   );
   toggleBtn.textContent = "Stop Listening";
 }
@@ -57,7 +57,7 @@ function stopRecognition() {
   recognition.stop();
   isListening = false;
   toggleBtn.classList.add(
-    "bg-red-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
+    "bg-red-500"
   );
   toggleBtn.textContent = "Start Listening";
 }
