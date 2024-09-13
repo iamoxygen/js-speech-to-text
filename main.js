@@ -22,6 +22,9 @@ recognition.onresult = function (event) {
     transcript += event.results[i][0].transcript;
   }
   output.value = transcript;
+
+  // Optional: Auto-scroll to the bottom
+  output.scrollTop = output.scrollHeight;
 };
 
 recognition.onerror = function (event) {
